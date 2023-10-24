@@ -34,14 +34,6 @@ void print_180(const point_t points[91]) {
     }
 }
 
-//void print_objects(object_list_t *object_list) {
-//    int i;
-//    for (i = 0; i < object_list.num_objects; i++) {
-//        print_pt(object_list.objects[i]);
-//    }
-//}
-
-
 void scan_180(point_t points[]) {
     cyBOT_Scan_t data;
     int angle;
@@ -161,37 +153,3 @@ void driveToSmallest(oi_t *sensor, struct object objects[4]){
 
     }
  }
-
-//
-//void x() {
-//
-//    oi_t *sensor_data = oi_alloc();
-//    timer_init();
-//    lcd_init();
-//    int init = 7;
-//    uart_init(115200);
-//    cyBOT_init_Scan(init);
-//
-//    cyBOT_SERVRO_cal_t calibration = cyBOT_SERVO_cal();
-//    right_calibration_value = calibration.right;
-//    left_calibration_value = calibration.left;
-//
-////    right_calibration_value = 248500;
-////    left_calibration_value = 1193500;
-//
-//    char message = uart_receive();
-//
-//    if (message == 'm') {
-//        uart_sendStr("\rDegrees\t\tDistance(cm)\n");
-//        point_t points[91];
-//        scan_180(points);
-//        print_180(points);
-////        find_objects(points);
-//        find_smallest_object(points);
-////        cyBOT_Scan_t data;
-////        cyBOT_Scan(20, &data);
-////        object_list_t object_list = find_objects(points);
-////        print_objects(object_list);
-//    }
-//    oi_free(sensor_data);
-//}

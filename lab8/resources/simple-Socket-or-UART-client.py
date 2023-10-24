@@ -18,8 +18,8 @@ import socket
 # UART END
 
 # TCP Socket BEGIN (See Echo Client example): https://realpython.com/python-sockets/#echo-client-and-server
-HOST = "127.0.0.1"  # The server's hostname or IP address
-PORT = 65432        # The port used by the server
+HOST = "192.168.1.1"  # The server's hostname or IP address
+PORT = 288        # The port used by the server
 cybot_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Create a socket object
 cybot_socket.connect((HOST, PORT))   # Connect to the socket  (Note: Server must first be running)
                       
@@ -27,8 +27,8 @@ cybot = cybot_socket.makefile("rbw", buffering=0)  # makefile creates a file obj
 # TCP Socket END
 
 # Send some text: Either 1) Choose "Hello" or 2) have the user enter text to send
-send_message = "Hello\n"                            # 1) Hard code message to "Hello", or
-# send_message = input("Enter a message:") + '\n'   # 2) Have user enter text
+# send_message = "Hello\n"                            # 1) Hard code message to "Hello", or
+send_message = input("Enter a message:") + '\n'   # 2) Have user enter text
 
 cybot.write(send_message.encode()) # Convert String to bytes (i.e., encode), and send data to the server
 

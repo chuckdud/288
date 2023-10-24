@@ -30,6 +30,7 @@ puttyComunication.obj: ../uart.h
 puttyComunication.obj: ../cd.h
 puttyComunication.obj: ../cyBot_Scan.h
 puttyComunication.obj: C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdlib.h
+puttyComunication.obj: ../adc.h
 
 ../puttyComunication.c:
 
@@ -90,4 +91,6 @@ C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/interrupt.h:
 ../cyBot_Scan.h:
 
 C:/ti/ccs1230/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdlib.h:
+
+../adc.h:
 

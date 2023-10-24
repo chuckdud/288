@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="ADC0"/>
+		<item key="selection" value="command_char"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="flag"/>
 			<item value="ADCX"/>
 			<item value="adc0_sac"/>
 			<item value="actss"/>
@@ -22,9 +23,10 @@
 			<item value="sound_dist"/>
 			<item value="distance"/>
 			<item value="cal"/>
-			<item value="servo_calibrate"/>
 		</list>
 		<list key="replacehistory">
+			<item value="command_char"/>
+			<item value=""/>
 			<item value="ADC0"/>
 			<item value="uart_sendStr"/>
 			<item value=".ir_dist"/>

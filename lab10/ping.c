@@ -86,23 +86,30 @@ void trigger_ping(){
 }
 
 void ping_interrupt_handler(void) {
-    if(TIMER3_MIS_R  & 0x400){
+    if(TIMER3_MIS_R  & 0x400) {
         TIMER3_ICR_R |= 0x400;
         if(edgeCount == 0){
             timeRisingEdge = TIMER3_TBR_R;
             edgeCount++;
         }
-        else if(edgeCount == 1){
+        else if(edgeCount == 1) {
             timeFallingEdge = TIMER3_TBR_R;
             edgeCount = 2;
         }
     }
 }
 
-float deltaToDistance(int delta){
+float delta_to_distance(int delta) {
    float clockSpeed = 6.25;
    float time = delta * clockSpeed;
    float distance = time * 34000;
    distance /= 100000000;
    return(distance/2);
+}
+
+int ping_read() {
+    trigger_ping();
+    while (edgeCount < 2);
+    int delta = timeRisingEdge - timeFallingEdge;
+    return delta_to_distance(delta);
 }

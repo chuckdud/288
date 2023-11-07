@@ -147,6 +147,12 @@ void lcd_puts(char data[])
 	}
 }
 
+void lcd_clear_puts(char data[])
+{
+    lcd_clear();
+    lcd_puts(data);
+}
+
 ///Send Command to LCD - Position, Clear, Etc.
 void lcd_sendCommand(uint8_t data)
 {

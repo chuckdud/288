@@ -9,6 +9,7 @@
 #include "math.h"
 #include "Timer.h"
 
+volatile int falling_edge = 0;
 
 void servo_init() {
     timer_init();
@@ -43,13 +44,11 @@ void servo_init() {
 }
 
 void servo_move(float degrees) {
-    float pulse_width = (0.005555555 * degrees) + 1; // in ms
-    pulse_width /= 1000; // in seconds
-    pulse_width *= 16000000; // in clock cycles
+    float pulse_width = (150.62 * degrees) + 1; // in clock cycles
 
-    int pulse_width_int = round(pulse_width);
+    int pulse_width_int = round(pulse_width) + (0x4E200-311556);
 
-    int falling_edge = 0x4E200 - pulse_width_int;
+    falling_edge = 0x4E200 - pulse_width_int;
     TIMER1_TBMATCHR_R = falling_edge;
     TIMER1_TBPMR_R = falling_edge >> 16;
 

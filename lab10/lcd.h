@@ -29,6 +29,9 @@ void lcd_putc(char data);
 ///Send Character array to LCD
 void lcd_puts(char data[]);
 
+//Clear -> Send Character array to LCD
+void lcd_clear_puts(char data[]);
+
 ///Clear LCD Screen
 void inline lcd_clear(void);
 

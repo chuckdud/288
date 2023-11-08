@@ -11,7 +11,7 @@ void move_n_display_servo(int degree) {
     lcd_clear_puts(degrees);
 }
 
-int main(void)
+int move_servo_buttons(void)
 {
     button_init();
     init_button_interrupts();

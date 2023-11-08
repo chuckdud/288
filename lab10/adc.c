@@ -5,6 +5,7 @@
  *      Author: cddudley
  */
 #include "adc.h"
+#include "math.h"
 
 void adc_init() {
     SYSCTL_RCGCGPIO_R |= 0x2; // enable GPIOB clock
@@ -20,8 +21,6 @@ void adc_init() {
 
     GPIO_PORTB_ADCCTL_R |= 0x10; // turns on acd for port B
 
-
-
     ADC0_ACTSS_R &= 0xE;
 
     ADC0_EMUX_R &= 0xFFF0;
@@ -34,19 +33,22 @@ void adc_init() {
 
     ADC0_SSCTL0_R = (ADC0_SSCTL0_R & 0xFFFFFFF6)|0x6; // sets the interrupt and end bits
 
-    ADC0_SAC_R |= 0x02; //hardware average
-
+    ADC0_SAC_R |= 0x04; //hardware average
 
     ADC0_ACTSS_R |= 0x1;
-
-
-
 }
 
 int adc_read(){
     ADC0_PSSI_R |= 0x1;
-    while (ADC0_SSFIFO0_R & 0x100);
+    while (ADC0_SSFSTAT0_R & 0x100);
     int adcValue = ADC0_SSFIFO0_R;
     ADC0_ISC_R |= 0x1;
     return adcValue &= 0x00000FFF;
+}
+
+int adc_read_convert() {
+    int raw = adc_read();
+    //    y = 11.29948 + (188820000 - 11.29948)/(1 + (x/15.11238)^3.667047)
+    // 11.29948 + (188820000 - 11.29948) / (1 + pow(raw / 15.11238, 3.667047));
+    return -7.79994*pow(10,-9)*pow(raw,3)+0.0000540086*pow(raw,2)-0.126712*raw+116.479;
 }

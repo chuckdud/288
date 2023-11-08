@@ -6,7 +6,7 @@
 */
 
 #include "uart.h"
-#include "timer.h"
+#include "Timer.h"
 #define REPLACE_ME 0x00
 
 
@@ -83,7 +83,7 @@ void uart_interrupt_handler()
 {
     if (UART1_MIS_R & 0x10)
     {
-        flag = UART1_DR_R & 0xFF;
+//        flag = UART1_DR_R & 0xFF;
     }
 
 //    UART1_ICR_R &= 0xFFFFFFEF;

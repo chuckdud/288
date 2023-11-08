@@ -14,4 +14,8 @@ void adc_init(void);
 
 int adc_read(void);
 
+int adc_read_convert();
+
+int raw_to_dist(int raw);
+
 #endif /* ADC_H_ */

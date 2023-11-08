@@ -54,6 +54,8 @@ void servo_move(float degrees) {
 
     // enable timer 1B
     TIMER1_CTL_R |= 0x100;
+    // allow time for servo to move to correct position
+    timer_waitMillis(500);
 }
 
 

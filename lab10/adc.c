@@ -44,11 +44,9 @@ void adc_init() {
 }
 
 int adc_read(){
-
     ADC0_PSSI_R |= 0x1;
     while (ADC0_SSFIFO0_R & 0x100);
     int adcValue = ADC0_SSFIFO0_R;
     ADC0_ISC_R |= 0x1;
     return adcValue &= 0x00000FFF;
-
 }
